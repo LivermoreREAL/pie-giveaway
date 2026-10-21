@@ -644,19 +644,19 @@ a{ color: var(--plum); }
               <input id="address" name="address" type="text" autocomplete="street-address" aria-describedby="address-hint" required>
               <p id="address-hint" class="field-hint">So we can keep it to one pie per household.</p>
             </div>
+            <fieldset class="choices">
+              <legend>Do you own or rent your home?</legend>
+              <div class="choice-row">
+                <label class="choice" for="home-owner"><input id="home-owner" type="radio" name="homeStatus" value="Owner" required> I own</label>
+                <label class="choice" for="home-renter"><input id="home-renter" type="radio" name="homeStatus" value="Renter" required> I rent</label>
+              </div>
+            </fieldset>
             <fieldset class="choices" id="slot-fieldset" aria-describedby="slot-hint">
               <legend>Which pickup times work for you?</legend>
               <p id="slot-hint" class="field-hint">Choose one or both. We'll email you the final pickup time after voting closes on November 17.</p>
               <div class="choice-row stack">
                 <label class="choice" for="slot-morning"><input id="slot-morning" type="checkbox" name="slotMorning" value="11 AM to 1 PM"> 11 AM to 1 PM</label>
                 <label class="choice" for="slot-afternoon"><input id="slot-afternoon" type="checkbox" name="slotAfternoon" value="2 PM to 4 PM"> 2 PM to 4 PM</label>
-              </div>
-            </fieldset>
-            <fieldset class="choices">
-              <legend>Do you own or rent your home?</legend>
-              <div class="choice-row">
-                <label class="choice" for="home-owner"><input id="home-owner" type="radio" name="homeStatus" value="Owner" required> I own</label>
-                <label class="choice" for="home-renter"><input id="home-renter" type="radio" name="homeStatus" value="Renter" required> I rent</label>
               </div>
             </fieldset>
             <div class="hp" aria-hidden="true">
