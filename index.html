@@ -3,22 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Free pumpkin pie for the first 200 registered households. Pickup Friday, November 20, 10 AM to 1 PM at Charles F. Kennedy Park, Union City. Hosted by Fran Hoang & Elisa Chao. Registration closes November 17.">
+<meta name="description" content="Free pumpkin pie for the first 200 registered households. Pickup Friday, November 20 at Charles F. Kennedy Park, Union City. Vote for 11 AM to 1 PM or 2 PM to 4 PM when you register by November 17.">
 <link rel="canonical" href="https://livermorereal.github.io/pie-giveaway/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Fran Hoang Team · Legacy Real Estate &amp; Associates">
 <meta property="og:url" content="https://livermorereal.github.io/pie-giveaway/">
 <meta property="og:title" content="Thankful for you, one pie at a time.">
-<meta property="og:description" content="Free pumpkin pie for the first 200 registered households. Pickup Friday, November 20, 10 AM to 1 PM at Charles F. Kennedy Park, Union City. Hosted by Fran Hoang & Elisa Chao. Registration closes November 17.">
+<meta property="og:description" content="Free pumpkin pie for the first 200 registered households. Pickup Friday, November 20 at Charles F. Kennedy Park, Union City. Vote for 11 AM to 1 PM or 2 PM to 4 PM when you register by November 17.">
 <meta property="og:image" content="https://livermorereal.github.io/pie-giveaway/images/share-card.jpg">
 <meta property="og:image:secure_url" content="https://livermorereal.github.io/pie-giveaway/images/share-card.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Free pumpkin pie giveaway: Friday, Nov 20, 10 AM to 1 PM at Charles F. Kennedy Park. Register by Nov 17.">
+<meta property="og:image:alt" content="Free pumpkin pie giveaway: Friday, Nov 20 at Charles F. Kennedy Park. Vote for 11 AM to 1 PM or 2 PM to 4 PM. Register by Nov 17.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Thankful for you, one pie at a time.">
-<meta name="twitter:description" content="Free pumpkin pie for the first 200 registered households. Pickup Friday, November 20, 10 AM to 1 PM at Charles F. Kennedy Park, Union City. Hosted by Fran Hoang & Elisa Chao. Registration closes November 17.">
+<meta name="twitter:description" content="Free pumpkin pie for the first 200 registered households. Pickup Friday, November 20 at Charles F. Kennedy Park, Union City. Vote for 11 AM to 1 PM or 2 PM to 4 PM when you register by November 17.">
 <meta name="twitter:image" content="https://livermorereal.github.io/pie-giveaway/images/share-card.jpg">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Union City Pumpkin Pie Giveaway</title>
@@ -362,7 +362,9 @@ a{ color: var(--plum); }
 .field input::placeholder{ color: var(--crust); opacity:.7; }
 .choices{ border:0; margin:0 0 1.1rem; padding:0; min-width:0; }
 .choices legend{ font-weight:600; font-size:.92rem; padding:0; margin-bottom:.4rem; }
+.choices .field-hint{ margin:0 0 .6rem; }
 .choice-row{ display:grid; grid-template-columns:1fr 1fr; gap:.6rem; }
+.choice-row.stack{ grid-template-columns:1fr; }
 .choice{
   display:flex; align-items:center; gap:.6rem;
   min-height:44px;
@@ -585,7 +587,7 @@ a{ color: var(--plum); }
                 </div>
                 <div class="ticket-item">
                   <span class="label">Time</span>
-                  <span class="value">10 AM to 1 PM</span>
+                  <span class="value">11 AM to 1 PM or 2 PM to 4 PM</span>
                 </div>
                 <div class="ticket-item">
                   <span class="label">Location</span>
@@ -602,7 +604,7 @@ a{ color: var(--plum); }
                   <span class="value">Tuesday, November 17, 2026</span>
                 </div>
               </div>
-              <p class="ticket-note">If any details change, we'll email you.</p>
+              <p class="ticket-note">Vote for the time that works for you when you register. We'll email you the final pickup time after voting closes on November 17.</p>
             </div>
             <div class="ticket-stub">
               <span>ADMIT ONE</span>
@@ -622,7 +624,7 @@ a{ color: var(--plum); }
           <p id="rsvp-eyebrow" class="eyebrow">Registration closes Tuesday, November 17</p>
           <h2 id="rsvp-heading">Reserve Your Pie</h2>
           <hr class="rule">
-          <p id="rsvp-intro" class="rsvp-intro">Reserve one pie for your household. Pies go to the first 200 households to register. We'll email you a confirmation with the pickup details.</p>
+          <p id="rsvp-intro" class="rsvp-intro">Reserve one pie for your household and vote for a pickup time. Pies go to the first 200 households to register. We'll email you a confirmation and, once voting closes, the final pickup time.</p>
 
           <form id="rsvp-form">
             <div class="field">
@@ -642,6 +644,14 @@ a{ color: var(--plum); }
               <input id="address" name="address" type="text" autocomplete="street-address" aria-describedby="address-hint" required>
               <p id="address-hint" class="field-hint">So we can keep it to one pie per household.</p>
             </div>
+            <fieldset class="choices" id="slot-fieldset" aria-describedby="slot-hint">
+              <legend>Which pickup times work for you?</legend>
+              <p id="slot-hint" class="field-hint">Choose one or both. We'll email you the final pickup time after voting closes on November 17.</p>
+              <div class="choice-row stack">
+                <label class="choice" for="slot-morning"><input id="slot-morning" type="checkbox" name="slotMorning" value="11 AM to 1 PM"> 11 AM to 1 PM</label>
+                <label class="choice" for="slot-afternoon"><input id="slot-afternoon" type="checkbox" name="slotAfternoon" value="2 PM to 4 PM"> 2 PM to 4 PM</label>
+              </div>
+            </fieldset>
             <fieldset class="choices">
               <legend>Do you own or rent your home?</legend>
               <div class="choice-row">
@@ -762,6 +772,8 @@ a{ color: var(--plum); }
   var heroCta = document.getElementById('cta-reserve');
   var buttonLabel = button.textContent;
   var soldOut = false; // true once the script reports all 200 pies are reserved
+  var slotBox = document.getElementById('slot-fieldset');
+  var slotInputs = slotBox.querySelectorAll('input[type="checkbox"]');
   var messages = {
     duplicate: "This household is already on our list. If that seems wrong, call or email Fran or Elisa.",
     email: "That email address doesn't look right. Check it and try again.",
@@ -769,7 +781,22 @@ a{ color: var(--plum); }
     network: "We couldn't send your request. Check your connection and try again."
   };
 
+  // The pickup-time vote needs at least one box ticked. Checkboxes have no built-in "one of these".
+  function checkSlots(){
+    var any = false;
+    for (var i = 0; i < slotInputs.length; i++) if (slotInputs[i].checked) any = true;
+    slotInputs[0].setCustomValidity(any ? '' : 'Choose at least one pickup time.');
+  }
+  // Voting closes with registration, so waitlist sign-ups don't see it. Disabled boxes are not sent or checked.
+  function hideVote(){
+    slotBox.hidden = true;
+    for (var i = 0; i < slotInputs.length; i++) slotInputs[i].disabled = true;
+  }
+  for (var s = 0; s < slotInputs.length; s++) slotInputs[s].addEventListener('change', checkSlots);
+  checkSlots();
+
   function setWaitlistMode(){
+    hideVote();
     eyebrow.textContent = 'Registration closed Tuesday, November 17';
     heading.textContent = 'Join the waitlist';
     intro.textContent = "Reservations closed on November 17, but you can join the waitlist through Thursday, November 19. We'll email you if a pie opens up. A waitlist spot isn't a reservation.";
@@ -780,6 +807,7 @@ a{ color: var(--plum); }
   // The hero button is left as it is; only the form card changes.
   function setSoldOutMode(){
     soldOut = true;
+    hideVote();
     eyebrow.textContent = 'All 200 pies are reserved';
     heading.textContent = 'Join the waitlist';
     intro.textContent = "All 200 pies are reserved, but you can join the waitlist through Thursday, November 19. We'll email you if a pie opens up. A waitlist spot isn't a reservation.";
@@ -834,10 +862,10 @@ a{ color: var(--plum); }
         ? ["You're on the waitlist.", "This isn't a reservation yet. We couldn't send your confirmation email just now, but your request is saved. We'll do our best to get you a pie and will contact you if one opens up.", '']
         : ["You're on the waitlist.", "This isn't a reservation yet. We'll do our best to get you a pie and will email you if one opens up. Check your inbox (and your spam or junk folder) for details.", ''];
     }
-    var cheer = "See you at Kennedy Park on Friday, November 20.";
+    var cheer = "We'll email you the final pickup time after voting closes on November 17. See you at Kennedy Park on Friday, November 20.";
     return noEmail
-      ? ["You're on the list!", "Your pie is reserved. We couldn't send your confirmation email just now, but your reservation is saved. If you don't hear from us soon, please contact Fran or Elisa using the details below.", cheer]
-      : ["You're on the list!", "Your pie is reserved. Check your inbox for your confirmation and pickup details. If you don't see the email, check your spam or junk folder.", cheer];
+      ? ["You're on the list!", "Your pie is reserved and your vote is saved. We couldn't send your confirmation email just now, but your reservation is saved. If you don't hear from us soon, please contact Fran or Elisa using the details below.", cheer]
+      : ["You're on the list!", "Your pie is reserved and your vote is in. Check your inbox for your confirmation. If you don't see the email, check your spam or junk folder.", cheer];
   }
   function showSuccess(res){
     var copy = successCopy(res);
