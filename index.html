@@ -466,11 +466,26 @@ a{ color: var(--plum); }
   text-align:center;
   color:#f7ead9;
 }
+.footer-logos{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:1.5rem;
+  margin:0 auto 1.3rem;
+}
 .logo-footer{
   width:120px;
-  margin:0 auto 1.1rem;
-  filter: grayscale(1) invert(1);
+  filter: grayscale(1) invert(1) brightness(1.5);
   mix-blend-mode: screen;
+}
+.logo-divider{
+  width:1px;
+  height:84px;
+  background: rgba(247,234,217,.35);
+}
+.logo-broker{
+  height:132px;
+  width:auto;
 }
 .footer-inner p{ margin:.3rem 0; font-size:.9rem; }
 .footer-inner .muted{ color:#f7ead9; opacity:.68; font-size:.82rem; }
@@ -504,6 +519,10 @@ a{ color: var(--plum); }
   .medallion{ width:104px; height:104px; }
   .host{ gap:1rem; }
   .host-photo{ width:100px; height:100px; }
+  .footer-logos{ gap:1rem; }
+  .logo-footer{ width:104px; }
+  .logo-divider{ height:72px; }
+  .logo-broker{ height:112px; }
 }
 </style>
 </head>
@@ -683,7 +702,11 @@ a{ color: var(--plum); }
 
   <footer class="footer-band">
     <div class="wrap footer-inner">
-      <img class="logo-footer" src="images/logo.jpg" alt="Fran Hoang Team">
+      <div class="footer-logos">
+        <img class="logo-footer" src="images/logo.jpg" alt="Fran Hoang Team">
+        <span class="logo-divider" aria-hidden="true"></span>
+        <img class="logo-broker" src="images/broker-logo.png" alt="Legacy Real Estate &amp; Associates, ERA Real Estate Powered">
+      </div>
       <p class="footer-tagline">Thankful for you, one pie at a time.</p>
       <p>Fran Hoang &middot; DRE# 01450679 &nbsp;&nbsp;|&nbsp;&nbsp; Elisa Chao &middot; DRE# 02016124</p>
       <p class="muted">Union City, CA &nbsp;&middot;&nbsp; Equal Housing Opportunity</p>
