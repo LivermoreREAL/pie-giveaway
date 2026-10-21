@@ -303,6 +303,7 @@ a{ color: var(--plum); }
 .offer h2{ font-size: 1.6rem; margin-bottom:.7rem; }
 .offer p{ margin:0 0 .8rem; max-width: 52ch; }
 .offer p:last-child{ margin:0; }
+.offer .deadline-line{ font-weight:700; color: var(--plum); }
 .ticket-title{ font-size:1.45rem; font-weight:600; margin:0 0 1.1rem; }
 
 /* share contest */
@@ -365,6 +366,7 @@ a{ color: var(--plum); }
   margin: .9rem 0 0;
 }
 .rsvp-intro{ margin:0 0 1.3rem; }
+.privacy + .privacy{ margin-top: .5rem; }
 .privacy{
   margin: 1rem 0 0;
   font-size:.84rem;
@@ -383,7 +385,9 @@ a{ color: var(--plum); }
 .hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
 .btn-primary:disabled{ opacity:.7; cursor:progress; transform:none; box-shadow:none; }
 .rsvp-success h3{ font-size:1.4rem; margin-bottom:.6rem; }
-.rsvp-success p{ margin:0; }
+.rsvp-success p{ margin:0 0 .8rem; }
+.rsvp-success p:last-child{ margin:0; }
+.rsvp-success p:empty{ display:none; }
 @media (prefers-reduced-motion: no-preference){
   .rsvp-success:not([hidden]){ animation: fadeUp .5s ease; }
 }
@@ -391,7 +395,8 @@ a{ color: var(--plum); }
 
 /* hosts */
 .hosts h2{ font-size: clamp(1.7rem, 1.3rem + 1.4vw, 2.3rem); margin-bottom: .9rem; }
-.hosts-intro{ margin: 0 0 1.8rem; max-width: 62ch; }
+.hosts-intro{ margin: 0 0 .8rem; max-width: 62ch; }
+.hosts-intro:last-of-type{ margin-bottom: 1.8rem; }
 .hosts-grid{
   display:grid;
   grid-template-columns: 1fr 1fr;
@@ -522,10 +527,10 @@ a{ color: var(--plum); }
       </div>
       <p class="hosted-by">Hosted by Fran Hoang &amp; Elisa Chao</p>
       <h1 class="headline">Thankful for you,<br> <em>one pie at a time.</em></h1>
-      <p class="subhead">As a small thank-you to our community, we're giving away free pumpkin pies, just in time for Thanksgiving. Register to reserve yours, then stop by to pick it up. We'd love to see you!<span class="subnote">One pie per household. Registration required.</span></p>
+      <p class="subhead">As a small thank-you to our community, we're giving away free pumpkin pies, just in time for Thanksgiving! Register to reserve yours, then stop by to pick it up. We'd love to see you.<span class="subnote">One pie per household. Registration is required to reserve your pie.</span></p>
       <div class="cta-row">
-        <a href="#rsvp" id="cta-reserve" class="btn-primary">Reserve your pie</a>
-        <a href="#details" class="btn-ghost">Pick-up details</a>
+        <a href="#rsvp" id="cta-reserve" class="btn-primary">Reserve Your Pie</a>
+        <a href="#details" class="btn-ghost">View Pickup Details</a>
       </div>
     </div>
   </header>
@@ -539,23 +544,29 @@ a{ color: var(--plum); }
               <h2 class="ticket-title">Pie pick-up</h2>
               <div class="ticket-row">
                 <div class="ticket-item">
-                  <span class="label">When?</span>
+                  <span class="label">Date</span>
                   <span class="value">Friday, November 20, 2026</span>
                 </div>
                 <div class="ticket-item">
-                  <span class="label">What time?</span>
+                  <span class="label">Time</span>
                   <span class="value">10:00 AM – 1:00 PM</span>
                 </div>
                 <div class="ticket-item">
-                  <span class="label">Where?</span>
-                  <span class="value">Charles F. Kennedy Park<br>Union City, CA</span>
+                  <span class="label">Location</span>
+                  <span class="value">Charles F. Kennedy Park<br>1333 Decoto Road<br>Union City, CA 94587</span>
+                </div>
+                <!-- TO CONFIRM BEFORE PUBLISHING: the exact pickup spot inside the park.
+                     Replace the bracketed text below, then delete the word "hidden" to show this line. -->
+                <div class="ticket-item" id="pickup-spot" hidden>
+                  <span class="label">Meet at</span>
+                  <span class="value">[PICKUP SPOT TO BE CONFIRMED]</span>
                 </div>
                 <div class="ticket-item ticket-deadline">
-                  <span class="label">Last day to register?</span>
+                  <span class="label">Registration deadline</span>
                   <span class="value">Sunday, November 15, 2026</span>
                 </div>
               </div>
-              <p class="ticket-note">Plans can shift. If the date, time, or place changes, we'll email everyone who signed up.</p>
+              <p class="ticket-note">Please register by the deadline to reserve your pie. If any event details change, we'll email everyone who registered.</p>
             </div>
             <div class="ticket-stub">
               <span>ADMIT ONE</span>
@@ -566,16 +577,17 @@ a{ color: var(--plum); }
             <hr class="rule">
             <h2>One pie. One household. All our thanks.</h2>
             <p>Every registered household will receive one whole pumpkin pie, reserved just for you.</p>
-            <p>Missed the registration deadline? No worries. After November 15, the form becomes a waitlist, open through November 19. We'll do our best to get you a pie, depending on availability. A waitlist spot isn't a reservation, and we'll email you if a pie opens up.</p>
+            <p class="deadline-line">Registration closes Sunday, November 15, 2026.</p>
+            <p>Missed the registration deadline? No worries! From November 16 to 19, you can join the waitlist right here, or <a class="handle" href="mailto:franhoang@gmail.com,elisachaorealty@gmail.com?subject=Pie%20waitlist%20request">email us</a>, and we'll do our best to add you to pie pickup, depending on availability. A waitlist spot is not a reservation, and a pie is not guaranteed.</p>
           </div>
         </div>
 
         <div class="split-form" id="rsvp">
         <div class="rsvp-card">
           <p id="rsvp-eyebrow" class="eyebrow">Registration closes Sunday, November 15</p>
-          <h2 id="rsvp-heading">Reserve your pie</h2>
+          <h2 id="rsvp-heading">Reserve Your Pie</h2>
           <hr class="rule">
-          <p id="rsvp-intro" class="rsvp-intro">Fill out the form to reserve one pie for your household. We'll email you a confirmation with the pickup details.</p>
+          <p id="rsvp-intro" class="rsvp-intro">Fill out the form below to reserve one pie for your household. We'll email you a confirmation with the pickup details.</p>
 
           <form id="rsvp-form">
             <div class="field">
@@ -598,18 +610,21 @@ a{ color: var(--plum); }
               <label for="website">Leave this field empty</label>
               <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
             </div>
-            <button type="submit" class="btn-primary btn-block">Reserve my pie</button>
+            <button type="submit" class="btn-primary btn-block">Reserve My Pie</button>
             <p id="rsvp-error" class="form-error" role="alert" hidden></p>
-            <p class="privacy">We use your details to confirm your pie pickup and let you know about any changes. We never sell your information. Fran or Elisa may also contact you with real estate information unrelated to this event; those emails include an unsubscribe link.</p>
+            <p class="privacy">Your information will be used to manage your pie reservation and communicate important event details.</p>
+            <p class="privacy">We never sell your information. Separately, Fran or Elisa may contact you with real estate information unrelated to this event; those emails include an unsubscribe link.</p>
           </form>
 
           <div id="rsvp-success" class="rsvp-success" hidden>
             <h3 id="success-title"></h3>
             <p id="success-body"></p>
+            <p id="success-body2"></p>
           </div>
 
           <div id="rsvp-closed" class="rsvp-success" hidden>
-            <p>Thank you to everyone who signed up! Questions? Email <a class="handle" href="mailto:franhoang@gmail.com">Fran</a> or <a class="handle" href="mailto:elisachaorealty@gmail.com">Elisa</a>.</p>
+            <p>Thank you to everyone who reserved a pie! Registration has ended, but you can still <a class="handle" href="mailto:franhoang@gmail.com,elisachaorealty@gmail.com?subject=Pie%20waitlist%20request">email us</a> to ask about the waitlist. Additional pies are subject to availability and are not guaranteed.</p>
+            <p>We look forward to seeing everyone who reserved a pie at Charles F. Kennedy Park on November 20!</p>
           </div>
         </div>
         </div>
@@ -620,19 +635,22 @@ a{ color: var(--plum); }
       <div class="wrap wrap-wide share-inner">
         <div>
           <p class="eyebrow">After pick-up</p>
-          <h2>A little more pie, all year long!</h2>
+          <h2>Win a Pie a Month for a Year!</h2>
         </div>
         <div class="share-text">
-          <p>Want a chance to win a pie every month for a year? Share a photo of your giveaway pie on Instagram and tag <a class="handle" href="https://www.instagram.com/franhoang/" target="_blank" rel="noopener">@franhoang</a> and <a class="handle" href="https://www.instagram.com/elisachao/" target="_blank" rel="noopener">@elisachao</a> to enter. Fran and Elisa will pick a winner at random from the tagged posts.</p>
-          <p>Entering is optional, and your pie doesn't depend on it. It's our way of spreading a little more joy beyond Thanksgiving.</p>
+          <p>Want to keep the pie love going? Share a photo of you enjoying your giveaway pie on Instagram and tag <a class="handle" href="https://www.instagram.com/franhoang/" target="_blank" rel="noopener">@franhoang</a> and <a class="handle" href="https://www.instagram.com/elisachao/" target="_blank" rel="noopener">@elisachao</a> for a chance to win a pie each month for one year!</p>
+          <p>It's our way of spreading a little more joy beyond Thanksgiving.</p>
+          <p>See the <a class="handle" href="rules.html">official giveaway rules</a> for eligibility, entry deadlines, winner selection, and prize details.</p>
+          <p>Entering is optional, and your pie doesn't depend on it. This promotion is not sponsored, endorsed, administered by, or associated with Instagram.</p>
         </div>
       </div>
     </section>
 
     <section class="section hosts">
       <div class="wrap wrap-wide">
-        <h2>Meet your hosts</h2>
-        <p class="hosts-intro">We're Fran Hoang and Elisa Chao, local real estate professionals who believe a great community is about more than just homes. We're grateful to be part of this community and excited to give back with a little Thanksgiving cheer.</p>
+        <h2>Meet Your Hosts</h2>
+        <p class="hosts-intro">We're Fran Hoang and Elisa Chao, local real estate professionals who believe a great community is about more than just homes.</p>
+        <p class="hosts-intro">We're grateful to be part of this community and excited to give back with a little Thanksgiving cheer. We hope this small gesture brings a little extra joy to your holiday!</p>
         <div class="hosts-grid">
           <div class="host">
             <img class="host-photo" src="images/fran.jpg" alt="Fran Hoang">
@@ -690,6 +708,7 @@ a{ color: var(--plum); }
   var success = document.getElementById('rsvp-success');
   var successTitle = document.getElementById('success-title');
   var successBody = document.getElementById('success-body');
+  var successBody2 = document.getElementById('success-body2');
   var closed = document.getElementById('rsvp-closed');
   var errorEl = document.getElementById('rsvp-error');
   var eyebrow = document.getElementById('rsvp-eyebrow');
@@ -706,31 +725,50 @@ a{ color: var(--plum); }
 
   function setWaitlistMode(){
     eyebrow.textContent = 'Registration closed Sunday, November 15';
-    heading.textContent = 'Join the waitlist';
-    intro.textContent = "Registration for reserved pies has closed, but you can join the waitlist through Thursday, November 19. We'll do our best to get you a pie, depending on availability, and we'll email you if one opens up. A waitlist spot isn't a reservation.";
-    buttonLabel = 'Join the waitlist';
+    heading.textContent = 'Join the Waitlist';
+    intro.textContent = "Registration for reserved pies has closed, but you can join the waitlist through Thursday, November 19. We'll do our best to get you a pie, depending on availability, and we'll email you if one opens up. A waitlist spot is not a reservation.";
+    buttonLabel = 'Join the Waitlist';
     button.textContent = buttonLabel;
-    heroCta.textContent = 'Join the waitlist';
+    heroCta.textContent = 'Join the Waitlist';
   }
   function showClosed(){
-    eyebrow.textContent = 'Registration and the waitlist are closed';
-    heading.textContent = 'Thank you!';
+    eyebrow.textContent = 'Registration closed Sunday, November 15';
+    heading.textContent = 'Registration is closed.';
     intro.hidden = true;
     form.hidden = true;
     success.hidden = true;
     closed.hidden = false;
     heroCta.hidden = true;
   }
-  function showSuccess(name, status){
-    var waitlisted = status ? status === 'Waitlist' : phase === 'waitlist';
-    var first = name ? name.split(/\s+/)[0] : '';
-    if (waitlisted) {
-      successTitle.textContent = "You're on the waitlist" + (first ? ', ' + first : '') + '.';
-      successBody.textContent = "This isn't a reservation yet. We'll do our best to get you a pie and will email you if one opens up. Check your email (and your spam folder) for details.";
-    } else {
-      successTitle.textContent = "You're on the list" + (first ? ', ' + first : '') + '!';
-      successBody.textContent = "Your pie is reserved! Check your email for confirmation and pickup details (and your spam folder, just in case). We look forward to seeing you on November 20 and sharing a little Thanksgiving cheer!";
+
+  // What the visitor is told depends on what the system actually confirmed:
+  //   res.status   'Registered' or 'Waitlist', reported by the Sheet script
+  //   res.emailed  false when the row was saved but the confirmation email failed
+  //   res.unconfirmed  true when the page could not read the script's reply
+  function successCopy(res){
+    res = res || {};
+    var waitlisted = res.status ? res.status === 'Waitlist' : phase === 'waitlist';
+    if (res.unconfirmed) {
+      return waitlisted
+        ? ['Thank you!', "We've received your request! Please check your email for details. A waitlist spot is not a reservation.", '']
+        : ['Thank you!', "We've received your request! Please check your email for confirmation and pickup details. If you don't see the email, check your spam or junk folder.", ''];
     }
+    var noEmail = res.emailed === false;
+    if (waitlisted) {
+      return noEmail
+        ? ["You're on the waitlist.", "This isn't a reservation yet. We couldn't send your confirmation email just now, but your request is saved. We'll do our best to get you a pie and will contact you if one opens up.", '']
+        : ["You're on the waitlist.", "This isn't a reservation yet. We'll do our best to get you a pie and will email you if one opens up. Check your inbox (and your spam or junk folder) for details.", ''];
+    }
+    var cheer = "We look forward to seeing you on November 20 and sharing a little Thanksgiving cheer!";
+    return noEmail
+      ? ["You're on the list!", "Your pie is reserved! We couldn't send your confirmation email just now, but your reservation is saved. If you don't hear from us soon, please contact Fran or Elisa using the details below.", cheer]
+      : ["You're on the list!", "Your pie is reserved! Check your inbox for your confirmation and pickup details. If you don't see the email, check your spam or junk folder.", cheer];
+  }
+  function showSuccess(res){
+    var copy = successCopy(res);
+    successTitle.textContent = copy[0];
+    successBody.textContent = copy[1];
+    successBody2.textContent = copy[2];
     form.hidden = true;
     intro.hidden = true;
     success.hidden = false;
@@ -748,8 +786,7 @@ a{ color: var(--plum); }
     e.preventDefault();
     errorEl.hidden = true;
     var data = new URLSearchParams(new FormData(form));
-    var name = (data.get('name') || '').trim();
-    if (!RSVP_URL) { showSuccess(name); return; }
+    if (!RSVP_URL) { showSuccess({}); return; }
 
     button.disabled = true;
     button.textContent = phase === 'waitlist' ? 'Joining the waitlist…' : 'Reserving your pie…';
@@ -759,10 +796,10 @@ a{ color: var(--plum); }
         // Some browsers won't let the page read the script's reply; send again without reading it.
         // The script's duplicate check keeps this from adding a second row.
         return fetch(RSVP_URL, { method: 'POST', body: data, mode: 'no-cors' })
-          .then(function(){ return { ok: true }; });
+          .then(function(){ return { ok: true, unconfirmed: true }; });
       })
       .then(function(res){
-        if (res.ok) showSuccess(name, res.status);
+        if (res.ok) showSuccess(res);
         else if (res.error === 'closed') showClosed();
         else showError(res.error);
       })
