@@ -738,6 +738,7 @@ a{ color: var(--plum); }
   var intro = document.getElementById('rsvp-intro');
   var heroCta = document.getElementById('cta-reserve');
   var buttonLabel = button.textContent;
+  var soldOut = false; // true once the script reports all 200 pies are reserved
   var messages = {
     duplicate: "This household is already on our list. If that seems wrong, call or email Fran or Elisa.",
     email: "That email address doesn't look right. Check it and try again.",
@@ -752,6 +753,29 @@ a{ color: var(--plum); }
     buttonLabel = 'Join the Waitlist';
     button.textContent = buttonLabel;
     heroCta.textContent = 'Join the Waitlist';
+  }
+  // The hero button is left as it is; only the form card changes.
+  function setSoldOutMode(){
+    soldOut = true;
+    eyebrow.textContent = 'All 200 pies are reserved';
+    heading.textContent = 'Join the waitlist';
+    intro.textContent = "All 200 pies are reserved, but you can join the waitlist through Thursday, November 19. We'll email you if a pie opens up. A waitlist spot isn't a reservation.";
+    buttonLabel = 'Join the Waitlist';
+    button.textContent = buttonLabel;
+  }
+  // Asks the script whether the pies are gone. If it can't answer, the form stays open and
+  // the script still decides when someone submits.
+  function checkCapacity(){
+    if (!RSVP_URL || phase !== 'open') return;
+    var ctl = window.AbortController ? new AbortController() : null;
+    var timer = ctl ? setTimeout(function(){ ctl.abort(); }, 6000) : null;
+    fetch(RSVP_URL + '?check=' + Date.now(), ctl ? { signal: ctl.signal } : {})
+      .then(function(r){ return r.json(); })
+      .then(function(res){
+        if (res && res.full === true && success.hidden && closed.hidden) setSoldOutMode();
+      })
+      .catch(function(){})
+      .then(function(){ if (timer) clearTimeout(timer); });
   }
   function showClosed(){
     eyebrow.textContent = 'Registration closed Sunday, November 15';
@@ -770,7 +794,7 @@ a{ color: var(--plum); }
   //   res.unconfirmed  true when the page could not read the script's reply
   function successCopy(res){
     res = res || {};
-    var waitlisted = res.status ? res.status === 'Waitlist' : phase === 'waitlist';
+    var waitlisted = res.status ? res.status === 'Waitlist' : (phase === 'waitlist' || soldOut);
     if (res.unconfirmed) {
       return waitlisted
         ? ['Thank you!', "We've received your request. Please check your email for details. A waitlist spot is not a reservation.", '']
@@ -809,6 +833,7 @@ a{ color: var(--plum); }
 
   if (phase === 'waitlist') setWaitlistMode();
   if (phase === 'closed') showClosed();
+  checkCapacity();
 
   form.addEventListener('submit', function(e){
     e.preventDefault();
@@ -817,7 +842,7 @@ a{ color: var(--plum); }
     if (!RSVP_URL) { showSuccess({}); return; }
 
     button.disabled = true;
-    button.textContent = phase === 'waitlist' ? 'Joining the waitlist…' : 'Reserving your pie…';
+    button.textContent = (phase === 'waitlist' || soldOut) ? 'Joining the waitlist…' : 'Reserving your pie…';
     fetch(RSVP_URL, { method: 'POST', body: data })
       .then(function(r){ return r.json(); })
       .catch(function(){
